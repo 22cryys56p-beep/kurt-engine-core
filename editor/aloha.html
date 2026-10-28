@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Aloha - Kurt's English</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+        }
+
+        .toolbar {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            padding: 0 18px;
+            gap: 10px;
+            background: #ffffff;
+            border-bottom: 1px solid #d2d2d7;
+        }
+
+        .toolbar button,
+        .toolbar select {
+            padding: 7px 10px;
+            border: 1px solid #c7c7cc;
+            border-radius: 7px;
+            background: #ffffff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .toolbar button:hover,
+        .toolbar select:hover {
+            background: #f5f5f7;
+        }
+
+        .toolbar .spacer {
+            flex: 1;
+        }
+
+        .publish {
+            background: #007aff !important;
+            color: white;
+            border-color: #007aff !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+        }
+
+        .format-toolbar {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 18px;
+            background: #fafafa;
+            border-bottom: 1px solid #d2d2d7;
+        }
+
+        .format-toolbar button,
+        .format-toolbar select {
+            padding: 6px 9px;
+            border: 1px solid #c7c7cc;
+            border-radius: 6px;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .format-toolbar button {
+            min-width: 34px;
+        }
+
+        .format-toolbar button:hover,
+        .format-toolbar select:hover {
+            background: #f5f5f7;
+        }
+
+        .workspace {
+            padding: 30px;
+        }
+
+        .page {
+            width: 900px;
+            min-height: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background: white;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+            box-sizing: border-box;
+        }
+
+        .page h1 {
+            margin-top: 0;
+        }
+
+        .editable {
+            min-height: 300px;
+            padding: 12px;
+            border: 1px solid #c7c7cc;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .editable:focus {
+            border-color: #007aff;
+        }
+
+        .divider {
+            width: 1px;
+            height: 24px;
+            background: #d2d2d7;
+            margin: 0 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="toolbar">
+        <button onclick="window.location.href='index.html'">← Pages</button>
+
+        <div class="spacer"></div>
+
+        <button class="publish">Publish</button>
+    </div>
+
+    <div class="format-toolbar">
+
+        <select onchange="formatText('fontName', this.value)">
+            <option value="">Font</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Arial">Arial</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Times New Roman">Times New Roman</option>
+        </select>
+
+        <select onchange="formatText('fontSize', this.value)">
+            <option value="">Size</option>
+            <option value="1">Small</option>
+            <option value="3">Normal</option>
+            <option value="5">Large</option>
+            <option value="7">Huge</option>
+        </select>
+
+        <div class="divider"></div>
+
+        <button onclick="formatText('bold')" title="Bold"><strong>B</strong></button>
+        <button onclick="formatText('italic')" title="Italic"><em>I</em></button>
+        <button onclick="formatText('underline')" title="Underline"><u>U</u></button>
+
+        <div class="divider"></div>
+
+        <button onclick="formatText('justifyLeft')" title="Align Left">≡</button>
+        <button onclick="formatText('justifyCenter')" title="Center">≡</button>
+        <button onclick="formatText('justifyRight')" title="Align Right">≡</button>
+
+        <div class="divider"></div>
+
+        <button onclick="addLink()" title="Add Link">🔗</button>
+
+    </div>
+
+    <div class="workspace">
+
+        <div class="page">
+
+            <h1>Edit Aloha</h1>
+
+            <div
+                class="editable"
+                id="editor"
+                contenteditable="true"
+            >Welcome to Kurt's English!</div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function formatText(command, value = null) {
+            document.execCommand(command, false, value);
+            document.getElementById("editor").focus();
+        }
+
+        function addLink() {
+            const url = prompt("Enter the web address:");
+            
+            if (url) {
+                document.execCommand("createLink", false, url);
+                document.getElementById("editor").focus();
+            }
+        }
+    </script>
+
+</body>
+</html>

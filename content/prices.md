@@ -2,6 +2,20 @@
 title: Prices
 ---
 
-# Prices
+# Open（Monday–Friday）
 
-This page will contain tuition information.
+平日　１５：００〜２１：００　教室及び外部  
+土曜日　１３：００〜１８：００　プライベート、外部のみ
+
+休日は日曜日＆祭日＆お盆＆年末年始です。
+
+また、１ヶ月に５回ある場合は５回目の週はお休みとなります。
+
+平日及び土曜日は外部で仕事がある場合が多々あります。
+
+※退会の場合は１ヶ月以上前に連絡お願いします。
+
+## Contact
+
+Phone: 018-893-3880  
+Email: contact@kurtsenglish.com
